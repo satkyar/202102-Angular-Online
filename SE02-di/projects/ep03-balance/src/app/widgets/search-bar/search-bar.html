@@ -1,0 +1,22 @@
+<form [formGroup]="form" class="mt-4 form-inline">
+
+  <select formControlName="type" class="form-control mr-2" *ngIf="!type">
+    <option value="">All Type</option>
+    <option value="Income">Income</option>
+    <option value="Expense">Expense</option>
+  </select>
+
+  <select formControlName="category" class="form-control mr-2">
+    <option value="">All Category</option>
+    <option *ngFor="let item of categories" [value]="item.id">{{item.name}}</option>
+  </select>
+
+  <input formControlName="from" type="date" class="form-control mr-2">
+
+  <input formControlName="to" type="date" class="form-control mr-2">
+
+  <button (click)="search()" type="date" class="btn btn-outline-primary mr-2"><i class="fa fa-search"></i> Search</button>
+
+  <button [routerLink]="[0]" type="date" class="btn btn-outline-danger ml-auto" *ngIf="type"><i class="fa fa-plus"></i> Add New</button>
+
+</form>

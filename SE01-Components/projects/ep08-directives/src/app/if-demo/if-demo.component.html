@@ -1,0 +1,34 @@
+<h3>If Demo</h3>
+
+<div class="row mt-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Html Method</div>
+      <div class="card-body">
+        <span [hidden]="!show">Html Method</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Bootstrap Method</div>
+      <div class="card-body">
+        <span [class.d-none]="!show">Bootstrap Method</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Angular Method</div>
+      <div class="card-body">
+        <span *ngIf="show">Angular Method</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="show=!show" class="btn btn-primary mt-4">
+  {{show ? 'Hide' : 'Show'}}
+</button>

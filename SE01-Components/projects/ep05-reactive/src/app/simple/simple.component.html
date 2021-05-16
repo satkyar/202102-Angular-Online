@@ -1,0 +1,69 @@
+<h3>Simple Reactive Form</h3>
+
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">Reactive Form</div>
+      <div [formGroup]="form" class="card-body">
+        <div class="form-group">
+          <label>Name</label>
+          <input formControlName="name" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select formControlName="category" class="form-control">
+            <option value="">Select One</option>
+            <option *ngFor="let item of categories" [ngValue]="item">{{item.name}}</option>
+          </select>
+        </div>
+        <fieldset formGroupName="size">
+          <div class="form-group">
+            <label>US Size</label>
+            <input type="number" formControlName="us" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>UK Size</label>
+            <input type="number" formControlName="uk" class="form-control">
+          </div>
+        </fieldset>
+        <div class="form-group" formArrayName="colors">
+          <label>Colors</label>
+          <div *ngFor="let item of colors.controls; index as i; last as l" [class.mb-2]="!l" class="input-group">
+            <input [formControlName]="i" type="text" class="form-control ml-1 ">
+            <div class="input-group-append">
+              <button (click)="removeColor(i)" class="input-group-btn btn btn-outline-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" formArrayName="props">
+          <label>Properites</label>
+          <div *ngFor="let item of props.controls; index as i; last as l" [formGroupName]="i" [class.mb-2]="!l" class="form-row">
+            <div class="col-5">
+              <input formControlName="property" type="text" class="form-control" placeholder="Enter Name">
+            </div>
+            <div class="col input-group">
+              <input formControlName="value" type="text" class="form-control">
+              <div class="input-group-append">
+                <button (click)="removeProp(i)" class="input-group-btn btn btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button (click)="addColor()" class="btn btn-primary mr-2">Add Color</button>
+          <button (click)="addProp()" class="btn btn-primary">Add Property</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">Form Value</div>
+      <div class="card-body">
+        <div class="form-group">
+          <pre>{{form.value | json}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<h4><i class="fa fa-tags"></i> Category Management</h4>
+
+<div [formGroup]="form" class="form-inline mt-4">
+  <div class="form-group">
+    <select formControlName="type" class="form-control mr-2">
+      <option value="">All Type</option>
+      <option value="Income">Income</option>
+      <option value="Expense">Expense</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <input formControlName="name" type="text" class="form-control mr-2" placeholder="Search Name...">
+  </div>
+
+  <div class="form-check">
+    <span class="form-control" style="border: 1px solid #ced4da;">
+      <input formControlName="deleted" type="checkbox" class="form-check-input">
+      <label class="form-check-label d-inline">Deleted</label>
+    </span>
+
+  </div>
+
+  <div class="form-group ml-2">
+    <button (click)="searchData()" class="btn btn-outline-primary mr-2"><i class="fa fa-search"></i> Search</button>
+  </div>
+
+  <button (click)="addData()" class="btn btn-outline-danger ml-auto"><i class="fa fa-plus"></i> Add New</button>
+</div>
+
+<!-- Table -->
+<table class="table table-striped mt-4" *ngIf="catList.length">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Deleted</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of catList">
+      <td>{{item.id}}</td>
+      <td>{{item.type}}</td>
+      <td>{{item.name}}</td>
+      <td>
+        <span (click)="switchDeleteStatus(item.id)" class="btn-link">
+          <i class="fa" [class.fa-check]="!item.deleted" [class.fa-close]="item.deleted"></i>
+        </span>
+      </td>
+      <td>
+        <span (click)="addData(item)" class="btn-link">
+          <i class="fa fa-pencil"> </i>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="edit-dialog" class="modal fade">
+  <category-edit [tData]="tData" (onSave)="saveData($event)"></category-edit>
+</div>

@@ -1,0 +1,18 @@
+<div class="main-app">
+  <div [class.hide]="hideSidebar" class="side-bar">
+    <h1 class="header">JDC Online Class</h1>
+    <ul>
+      <li><a [routerLink]="['/hello']" routerLinkActive="active" ><i class="fa fa-home"></i> Hello Di</a></li>
+      <li><a>Hello Di</a></li>
+      <li><a>Hello Di</a></li>
+    </ul>
+  </div>
+  <div class="container-fluid pt-4">
+    <h3>
+      <span (click)="hideSidebar=!hideSidebar" >
+        <i class="fa fa-bars"></i> Dependencey Injection
+      </span>
+    </h3>
+    <router-outlet></router-outlet>
+  </div>
+</div>

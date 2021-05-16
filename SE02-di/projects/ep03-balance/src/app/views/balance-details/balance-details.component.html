@@ -1,0 +1,55 @@
+<h4>{{balance?.category.type}} Details</h4>
+
+  <!-- Balance List -->
+  <div class="form-row">
+    <div class="col form-group mr-2">
+      <label>Category</label>
+      <span class="form-control">{{balance?.category.name}}</span>
+    </div>
+    <div class="col form-group mr-2">
+      <label>Date</label>
+      <span class="form-control">{{balance?.useDate | date: 'yyyy-MM-dd'}}</span>
+    </div>
+    <div class="col form-group mr-2">
+      <label>Employee</label>
+      <span class="form-control">{{balance?.employee}}</span>
+    </div>
+    <div class="col form-group mr-2">
+      <label class="w-100 pr-3 text-right">Total</label>
+      <span class="form-control text-right">{{balance?.total | number}} Ks</span>
+    </div>
+  </div>
+
+  <!-- Balance List -->
+  <div class="card">
+    <div class="card-header">Details</div>
+
+    <div class="card-body">
+      <div *ngFor="let item of details; first as f" class="form-row">
+        <!-- Item -->
+        <div class="col form-group">
+          <label *ngIf="f">Item</label>
+          <span class="form-control">{{item.item}}</span>
+        </div>
+        <!-- Remark -->
+        <div class="col form-group">
+          <label *ngIf="f">Remark</label>
+          <span class="form-control">{{item.remark}}</span>
+        </div>
+        <!-- Unit -->
+        <div class="col-1 form-group">
+          <label *ngIf="f">Quantity</label>
+          <span class="form-control text-right">{{item.unit}}</span>
+        </div>
+        <!-- Amount -->
+        <div class="col-2 form-group">
+          <label *ngIf="f" class="w-100 pr-3 text-right">Amount</label>
+          <span class="form-control text-right">{{item.amount | number}} Ks</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer text-right">
+      <button [routerLink]="['/balance', balance?.category.type, balance?.id]" class="btn btn-danger mr-2"><i class="fa fa-pencel"> Edit</i></button>
+    </div>
+  </div>

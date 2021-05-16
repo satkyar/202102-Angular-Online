@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <div class="container">
+    <span class="navbar-brand">Reactive Form</span>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a [routerLink]="['/']" routerLinkActive="active"  class="nav-link" [routerLinkActiveOptions]="{exact:true}">Simple Form</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/validations']" routerLinkActive="active"  class="nav-link" [routerLinkActiveOptions]="{exact:true}">Validations</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/changes']" routerLinkActive="active"  class="nav-link" [routerLinkActiveOptions]="{exact:true}">Value Changes</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <router-outlet></router-outlet>
+</div>

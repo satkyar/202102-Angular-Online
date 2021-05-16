@@ -1,0 +1,35 @@
+<h4>Balance Report</h4>
+
+<search-bar (onSearch)="searchData($event)"></search-bar>
+
+<table class="table table-stiped mt-4">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Category</th>
+      <th>Employee</th>
+      <th class="text-right">Income</th>
+      <th class="text-right">Expense</th>
+      <th class="text-right">Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Details -->
+    <tr *ngFor="let item of list">
+      <td>{{item.id}}</td>
+      <td>
+        <a [routerLink]='["/balance", item.category.type, item.id, "details"]'>{{item.useDate | date: 'yyyy-MM-dd'}}</a>
+      </td>
+      <td>{{item.category.id}}</td>
+      <td>{{item.category.name}}</td>
+      <td>{{item.employee}}</td>
+      <td class="text-right">{{(item.category.type === 'Income' ? item.total : 0) | number}}</td>
+      <td class="text-right">{{(item.category.type === 'Expense' ? item.total : 0)   | number}}</td>
+      <td class="text-right">
+        <a [routerLink]='["/balance", item.category.type, item.id]'>{{item.balanceTotal | number}}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
