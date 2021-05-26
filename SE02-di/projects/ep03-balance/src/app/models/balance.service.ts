@@ -61,7 +61,7 @@ export class BalanceService {
    * @param form
    * @returns
    */
-  searchData(form: BalanceSearch): BalanceVO[] {
+  searchData(form: BalanceSearch): readonly BalanceVO[] {
     // Filter Balances
     let balanceTotal = 0;
     return this.balanceSearch(form)
