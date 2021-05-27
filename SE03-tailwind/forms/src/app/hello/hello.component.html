@@ -1,0 +1,13 @@
+<h1>Passing Parameter</h1>
+
+<div class="mt-4 grid grid-cols-4 gap-8">
+  <div class="item-group">
+    <span [routerLink]="['path', 10, 'category', 'hello']" routerLinkActive="active" class="item">Path Params</span>
+    <span [routerLink]="['matrix', 'income', {data: '100', color: 'blue'}]" routerLinkActive="active" class="item">Matrix Params</span>
+    <span [routerLink]="['matrix', 'expense', {data: '150', color: 'red'}]" routerLinkActive="active" class="item">Other Matrix Params</span>
+    <span [routerLink]="['query']" [queryParams]="{name: 'data', location: 'Yangon'}" routerLinkActive="active" class="item">Query Params</span>
+  </div>
+  <div class="col-span-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<!-- Navbar  -->
+<div class="navbar">
+  <nav>
+    <!-- Page Title -->
+    <h1>Tailwind CSS</h1>
+
+    <!-- Menu -->
+    <div class="menu">
+      <a [routerLink]="['/form']" routerLinkActive="active">Forms</a>
+      <a [routerLink]="['/hello']" routerLinkActive="active">Hello</a>
+      <a [routerLink]="['/resolve']" routerLinkActive="active">Resovlers</a>
+
+      <a href="nothing">Not Found</a>
+    </div>
+  </nav>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
